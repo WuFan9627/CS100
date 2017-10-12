@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "FanWu"
+echo $1 $2
