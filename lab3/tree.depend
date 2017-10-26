@@ -1,0 +1,221 @@
+# depslib dependency file v1.0
+1508383697 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\main.cpp
+	<iostream>
+	"Add.h"
+	"Divide.h"
+	"Multiply.h"
+	"Square.h"
+	"Subtract.h"
+	"Op.h"
+	"base.h"
+
+1508380099 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\base.cpp
+	"base.h"
+
+1508381202 c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\base.h
+
+1508384620 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\multiply.cpp
+	"Multiply.h"
+
+1508384249 c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\multiply.h
+	"base.h"
+
+1508381202 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\base.h
+
+1508384249 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\multiply.h
+	"base.h"
+
+1508384544 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\divide.h
+	"base.h"
+
+1508384597 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\add.cpp
+	"Add.h"
+
+1508384544 c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\add.h
+	"base.h"
+
+1508384544 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\add.h
+	"base.h"
+
+1508384609 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\divide.cpp
+	"Divide.h"
+
+1508384544 c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\divide.h
+	"base.h"
+
+1508384642 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\subtract.cpp
+	"Subtract.h"
+
+1508384544 c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\subtract.h
+	"base.h"
+
+1508384544 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\subtract.h
+	"base.h"
+
+1508384630 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\square.cpp
+	"Square.h"
+
+1508384544 c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\square.h
+	"base.h"
+
+1508384544 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\square.h
+	"base.h"
+
+1508383738 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\op.cpp
+	"Op.h"
+
+1508383738 c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\op.h
+	"base.h"
+
+1508383738 source:c:\users\戈韵如\desktop\ucr\选课\cs-100 software construction\lab\lab3\c++\tree\op.h
+	"base.h"
+
+1508384597 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\add.cpp
+	"Add.h"
+
+1508384544 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\add.h
+	"base.h"
+
+1508381202 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\base.h
+
+1508384544 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\add.h
+	"base.h"
+
+1508380099 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\base.cpp
+	"base.h"
+
+1508381202 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\base.h
+
+1508384609 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\divide.cpp
+	"Divide.h"
+
+1508384544 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\divide.h
+	"base.h"
+
+1508384544 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\divide.h
+	"base.h"
+
+1508384620 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\multiply.cpp
+	"Multiply.h"
+
+1508384249 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\multiply.h
+	"base.h"
+
+1508384249 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\multiply.h
+	"base.h"
+
+1508383738 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\op.cpp
+	"Op.h"
+
+1508383738 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\op.h
+	"base.h"
+
+1508383738 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\op.h
+	"base.h"
+
+1508384630 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\square.cpp
+	"Square.h"
+
+1508384544 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\square.h
+	"base.h"
+
+1508384544 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\square.h
+	"base.h"
+
+1508384642 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\subtract.cpp
+	"Subtract.h"
+
+1508384544 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\subtract.h
+	"base.h"
+
+1508384544 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\subtract.h
+	"base.h"
+
+1509009925 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\bubblesort.cpp
+	"BubbleSort.h"
+
+1508988647 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\bubblesort.h
+	"Sort.h"
+
+1508989739 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\sort.h
+	"Container.h"
+
+1508988613 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\container.h
+	<cstddef>
+	"Sort.h"
+	"base.h"
+
+1508988647 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\bubblesort.h
+	"Sort.h"
+
+1508989728 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\container.cpp
+	"Container.h"
+
+1508988613 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\container.h
+	<cstddef>
+	"Sort.h"
+	"base.h"
+
+1509010353 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\main.cpp
+	<iostream>
+	"Add.h"
+	"Divide.h"
+	"Multiply.h"
+	"Square.h"
+	"Subtract.h"
+	"Op.h"
+	"base.h"
+	"Sort.h"
+	"Container.h"
+	"VectorContainer.h"
+	"SelectionSort.h"
+	"BubbleSort.h"
+	"ListContainer.h"
+
+1509010001 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\selectionsort.cpp
+	"SelectionSort.h"
+
+1508388017 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\selectionsort.h
+	"Sort.h"
+
+1508388017 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\selectionsort.h
+	"Sort.h"
+
+1508991305 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\sort.cpp
+	"Sort.h"
+
+1508989739 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\sort.h
+	"Container.h"
+
+1509009699 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\vectorcontainer.cpp
+	"VectorContainer.h"
+
+1508990466 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\vectorcontainer.h
+	<vector>
+	<iostream>
+	"Container.h"
+	"base.h"
+
+1508990466 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\vectorcontainer.h
+	<vector>
+	<iostream>
+	"Container.h"
+	"base.h"
+
+1509010481 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\listcontainer.cpp
+	"ListContainer.h"
+
+1509005837 c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\listcontainer.h
+	<list>
+	<iostream>
+	<numeric>
+	"Container.h"
+	"base.h"
+
+1509005837 source:c:\users\戈韵如\desktop\课程\cs-100 software construction\lab\lab3\c++\tree\listcontainer.h
+	<list>
+	<iostream>
+	<numeric>
+	"Container.h"
+	"base.h"
+
