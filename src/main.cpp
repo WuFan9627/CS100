@@ -1,233 +1,109 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
 #include <string.h>
 #include <unistd.h>
-#include <fcntl.h>
 #include <sys/types.h>
-#include <dirent.h>
-#include <iostream>
-#include <fstream>
-#include <sys/stat.h>
-#include <cerrno>
-#include <fcntl.h>
-#include <unistd.h>
 #include <sys/wait.h>
+#include <iostream>
+#include <cstdlib>
 
-char command[100];
-char argv[50][50];
-int count;
+using namespace std;
 
-enum specify {NORMAL,OUT_REDIRECT,IN_REDIRECT,PIPE};
+const int MAX_ARGS = 256;
 
+int runCommands(char **argv) {
 
-int analysis_command();
-int do_command();
-int find_command(char *command);
+	int status;
+	pid_t pid;
 
-int main()
-{
-    while(1)
-    {
-        printf("$ ");
-        command[0]=0;
-        gets(command);
-        if(!analysis_command())
-            continue;
-        do_command();
-    }
-    return 0;
+	pid = fork();
+
+	if(pid < 0) {
+		perror("Error: pid < 0!");
+		return 0;
+	}
+	else if(pid == 0) {
+		if(execvp(*argv, argv) < 0) {
+			perror("execvp error!");
+			return 0;
+		}
+	}
+	while(wait(&status) != pid)
+		;
+	return 1;
 }
 
-int analysis_command()
-{
-    char *s=command;
-    int i=0,j=0,state=0;
-    strcat(command," ");//be separated by spaces
+void verificationConnector(int value, char **parsedTokens, char *statements) {
 
-    while(*s)
-    {
-        switch(state)
-        {
-        case 0:
-            if(!isspace(*s))
-                state=1;
-            else
-                s++;
-            break;
-        case 1:
-            if(isspace(*s))
-            {
-                argv[i][j]='\0';
-                i++;
-                j=0;
-                state=0;
-            }
-            else
-            {
-                argv[i][j]=*s;
-                j++;
-            }
-            s++;
-            break;
-        }
-    }
-    count=i;
-    if(count==0)
-        return 0;
+	if(strcmp(statements, "&&") == 0) {
+		if(value){
+            verificationConnector(1, parsedTokens, strtok(0, " "));
+		}
+	} else if(strcmp(statements, "||") == 0) {
+		if(!value){
+            verificationConnector(1, parsedTokens, strtok(0, " "));
+		}
+	} else if(statements == 0 || *statements == '#') {
+		return;
+	} else if(strcmp(statements, "exit") == 0) {
+		exit(0);
+	} else {
+		int i;
+		char *next = strtok(0, " ");
+		*parsedTokens = statements;
+		for(i = 1; next && *next != '#' && strcmp(next, "&&") && strcmp(next, "||"); i++) {
+			parsedTokens[i] = next;
+			next = strtok(0, " ");
+		}
 
-    if(strcmp(argv[0],"logout")==0 || strcmp(argv[0],"exit")==0)
-        exit(0);
-
-
-    if(!find_command(argv[0]))
-    {
-        puts("error:can't find command");
-        return 0;
-    }
-    return 1;
+		verificationConnector(runCommands(parsedTokens), parsedTokens + i + 1, next);
+	}
 }
 
-int do_command()
-{
-    int i,j;
-    char* file;
-    char* arg[50];
-    char* arg2[50];
-    int f=0,back_run=0;
-    int fd,pid,fd2,pid2;
-    enum specify type=NORMAL;
+void handleCommands(char *commands) {
+	char *statements[MAX_ARGS] = {0};
+	char *parsedTokens[MAX_ARGS] = {0};
+	int i = 0;
 
-    for(i=0; i<count; i++)
-    {
-        arg[i]=argv[i];
-    }
-    arg[i]=NULL;
+	for(char *tok = strtok(commands, ";"); tok; tok = strtok(0, ";")) {
+		statements[i] = tok;
+		i++;
+	}
 
-    if(strcmp(arg[count-1],"<")==0 || strcmp(arg[count-1],">")==0 || strcmp(arg[count-1],"|")==0)
-    {
-        printf("error:command error\n");
-        return 0;
-    }
+	for(int i = 0; statements[i]; i++) {
+		verificationConnector(1, parsedTokens, strtok(statements[i], " "));
+		for(int j = 0; parsedTokens[j]; j++) {
+			parsedTokens[j] = 0;
+		}
+	}
+}
 
-    for(i=0; i<count; i++)
-    {
-        if(strcmp(arg[i],"<")==0)
-        {
-            f++;
-            file=arg[i+1];
-            arg[i]=NULL;
-            type=IN_REDIRECT;
-        }
-        else if(strcmp(arg[i],">")==0)
-        {
-            f++;
-            file=arg[i+1];
-            arg[i]=NULL;
-            type=OUT_REDIRECT;
-        }
-        else if(strcmp(arg[i],"|")==0)
-        {
-            f++;
-            type=PIPE;
-            arg[i]=NULL;
-            for(j=i+1; j<count; j++)
-            {
-                arg2[j-i-1]=arg[j];
-            }
-            arg2[j-i-1]=NULL;
-            if(!find_command(arg2[0]))
-            {
-                printf("error:can't find command\n");
-                return 0;
-            }
-        }
-    }
-
-    if(strcmp(arg[count-1],"&")==0)
-    {
-        back_run=1;
-        arg[count-1]=NULL;
-    }
-
-    if(f>1)
-    {
-        printf("error:don't identify the command");
-        return 0;
-    }
-
-    pid=fork();
-    if(pid<0)
-    {
-        perror("fork error");
-        exit(0);
-    }
-    else if(pid==0)  
-    {
-        switch(type)
-        {
-        case NORMAL:
-            execvp(arg[0],arg);
-            break;
-        case IN_REDIRECT:
-            fd=open(file,O_RDONLY);
-            dup2(fd,STDIN_FILENO);
-            execvp(arg[0],arg);
-            break;
-        case OUT_REDIRECT:
-            fd=open(file,O_WRONLY|O_CREAT|O_TRUNC,0666);
-            dup2(fd,STDOUT_FILENO);
-            execvp(arg[0],arg);
-            break;
-        case PIPE:
-            pid2=fork();
-            if(pid2==0)
-            {
-                fd2=open("tempfile",O_WRONLY|O_CREAT|O_TRUNC,0600);
-                dup2(fd2,STDOUT_FILENO);
-                execvp(arg[0],arg);
-            }
-            else
-            {
-                waitpid(pid2,NULL,0);
-                fd=open("tempfile",O_RDONLY);
-                dup2(fd,STDIN_FILENO);
-                execvp(arg2[0],arg2);
-            }
-            break;
-        }
-    }
-    else
-    {
-        if(!back_run)
-            waitpid(pid,NULL,0);
-    }
-    return 1;
+void changeBuffer(string &buffer) {
+	for(size_t i = 2; i < buffer.length(); i++) {
+		if(buffer[i] == '&' && buffer[i - 1] == '&' && buffer[i - 2] != ' ') {
+			buffer = buffer.substr(0, i - 1) + " && " + buffer.substr(i + 1);
+			i+=2;
+		} else if(buffer[i] == '|' && buffer[i - 1] == '|' && buffer[i - 2] != ' ') {
+			buffer = buffer.substr(0, i - 1) + " || " + buffer.substr(i + 1);
+			i+=2;
+		} else if(buffer[i] == '#' && buffer[i - 1] != ' ') {
+			buffer = buffer.substr(0, i - 1) + + " #" + buffer.substr(i + 1);
+			i+=2;
+		}
+	}
 }
 
 
-int find_command(char *command)
-{
-    DIR *d;
-    struct dirent *ptr;
-    char temp[100];
-    char *dir;
-    char *path=getenv("PATH");
+int main() {
+	string buffer;
 
-    strcpy(temp,path);
-    dir=strtok(temp,":");
-    while(dir)
-    {
-        d=opendir(dir);
-        while((ptr=readdir(d)) != NULL)
-            if(strcmp(ptr->d_name,command) == 0)
-            {
-                closedir(d);
-                return 1;
-            }
-        closedir(d);
-        dir=strtok(NULL,":");
-    }
-    return 0;
+	while(true) {
+		cout << "$ ";
+		getline(cin,buffer);
+		changeBuffer(buffer);
+		char *temp = (char *)buffer.c_str();
+		handleCommands(temp);
+	}
+
+	return 0;
 }
 
