@@ -5,7 +5,9 @@ Rshell allows the user to type in shell script commands. With the connectors suc
 
 ## Bug report
 Cannot exit in multiple commands, only works in a single command(fixed)
+
 Cannot execute the command after '&&'even if the former one is executed(fixed)
+
 Cannot handle 'echo #' command(fixed)
 
 ## Licensing
