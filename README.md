@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-Everything is awesome
-=======
 # Assignment 2 -- Writing a Basic Command Shell
 
 ## Overview
